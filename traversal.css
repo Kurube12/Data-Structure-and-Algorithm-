@@ -1,0 +1,315 @@
+/* ===== GLOBAL ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #010f25;
+    color: #ffffff;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(90deg, #1a1a1a, #333333);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    border-bottom: 2px solid #00adee;
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+}
+
+/* BURGER BUTTON */
+.burger {
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.burger:hover {
+    background: #00adee;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* LOGO */
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #00adee;
+    text-decoration: none;
+    position: absolute;
+    left: 70px; /* leave space for burger */
+}
+
+/* NAV LINKS CENTERED */
+.nav-links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    background: #00adee;
+}
+
+/* ===== SIDEBAR ===== */
+.side-bar {
+    position: fixed;
+    top: 70px;
+    left: -260px;
+    width: 220px;
+    height: 100vh;
+    background: #1a1a1a;
+    padding: 25px 20px;
+    transition: left 0.3s ease;
+    z-index: 998;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.2);
+}
+
+.side-bar.active {
+    left: 0;
+}
+
+.side-bar a {
+    display: block;
+    padding: 14px 12px;
+    margin-bottom: 12px;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    background: #2c2c2c;
+    transition: 0.3s;
+}
+
+.side-bar a:hover {
+    background: #00adee;
+    transform: translateX(5px);
+}
+
+/* ===== OVERLAY ===== */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: rgba(0,0,0,0.3);
+    z-index: 997;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* ===== MAIN CONTENT ===== */
+main {
+    margin-top: 110px;
+    width: 90%;
+    max-width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 25px;
+    text-align: center;
+}
+
+/* ===== HEADINGS ===== */
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: #00adee;
+}
+
+h2, h3 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+p {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: #cccccc;
+}  
+
+/* Generic input/button */
+input, button {
+    font-size: 16px;
+    padding: 10px;
+}
+
+/* Control-panel overrides */
+.control-panel input {
+    width: 90%;
+    padding: 18px;
+    font-size: 1.5rem;
+}
+
+.control-panel button {
+    padding: 22px 35px;
+    font-size: 1.8rem;
+}
+
+
+/* ===== CONTROL PANEL ===== */
+.control-panel {
+    background: #1f1f1f;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    margin-bottom: 35px;
+}
+
+.control-panel input {
+    width: 90%;
+    padding: 18px;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 2px solid #00adee;
+    outline: none;
+    background: #f5f5f5;
+    color: #010f25;
+}
+
+.control-panel input::placeholder {
+    color: #666;
+}
+
+.control-panel button {
+    padding: 22px 35px;
+    font-size: 1.8rem;
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
+    background: linear-gradient(135deg, #00adee, #008bbf);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.control-panel button:hover {
+    background: linear-gradient(135deg, #008bbf, #005f7f);
+    transform: scale(1.08);
+}
+
+.output-box {
+    background-color: #1f1f1f;   /* dark background */
+    color: #ffffff;             /* text color */
+    padding: 15px 20px;         /* inner spacing */
+    border-radius: 12px;        /* rounded corners */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* subtle shadow */
+    font-size: 1.2rem;
+    min-height: 50px;           /* ensures box is visible even if empty */
+    margin-top: 20px;
+    white-space: pre-wrap;      /* preserves line breaks for multiple values */
+}
+
+
+/* ===== TREE VISUALIZATION ===== */
+#treeContainer {
+    position: relative;
+    width: 100%;
+    min-height: 520px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    overflow: auto;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Node styling */
+.node {
+    width: 70px;
+    height: 70px;
+    border: 3px solid #4CAF50;
+    border-radius: 50%;
+    background: #e8ffe8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: 0.4s ease;
+    margin: 12px;
+    color: #333;
+}
+
+.node:hover {
+    transform: scale(1.15);
+    background: #c6ffc6;
+}
+
+/* Line styling for edges */
+.line {
+    position: absolute;
+    width: 2px;
+    background: #00adee;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    h1 {
+        font-size: 2.4rem;
+    }
+
+    h2, h3 {
+        font-size: 1.6rem;
+    }
+
+    .control-panel input,
+    .control-panel button {
+        width: 95%;
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,112 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sorting</title>
+        <link rel="stylesheet" href="sorting.css">
+    
+    </head>
+    
+    <body>
+    <nav class="navbar">
+        <div class="burger" onclick="toggleSidebar()">
+    ☰
+</div>
+
+        <div class="nav-container">
+            <a href="#home" class="logo">CC-104</a>
+        <div class="nav-links">
+            <a href="index.html">Stacks</a>
+            <a href="#home">Searching & Sorting</a>
+            <a href="traversal.html">Tree Traversal</a>
+            
+        </div>
+        </div>
+        </nav>
+    
+
+        <nav id="sidebar" class="side-bar">
+    <a href="#bubble-sort">Bubble Sort</a>
+    <a href="#quick-sort">Quick Sort</a>
+   
+</nav>
+
+        <main>
+            <h1>Searching and Sorting </h1> 
+<hr>
+
+
+
+            <h1>Sorting Visualizer</h1>
+
+    <!-- Bubble Sort Section -->
+    <section>
+        <h2>Bubble Sort</h2>
+        <div class="input-section">
+            <input type="text" id="bubbleInput" placeholder="Enter numbers separated by commas">
+            <button id="bubbleSortBtn">Sort</button>
+            <button id="sortAll">Sort All</button>
+        </div>
+        <p id="bubbleOutput"></p>
+
+        <div id="bubbleArrayContainer" class="array-container"></div>
+
+    </section>
+
+    <!-- Quick Sort Section -->
+    <section>
+        <h2>Quick Sort</h2>
+        <div class="input-section">
+            <input type="text" id="quickInput" placeholder="Enter numbers separated by commas">
+            <button id="quickSortBtn">Sort</button>
+        </div>
+        <p id="quickOutput"></p>
+        <div id="quickArrayContainer" class="array-container"></div>
+    </section>
+
+    <script src="sorting.js"></script>
+
+            
+        </div>
+        
+        </section>
+
+
+            
+
+    </div>
+        
+
+    </main>
+   <script>
+function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+}
+
+// Close sidebar if clicking outside of it
+document.addEventListener("click", function(event) {
+    const sidebar = document.getElementById("sidebar");
+    const burger = document.querySelector(".burger");
+
+    // conditions:
+    // 1. sidebar is open
+    // 2. clicked element is NOT sidebar
+    // 3. clicked element is NOT inside sidebar
+    // 4. clicked element is NOT the burger button
+    // 5. clicked element is NOT inside the burger
+    if (
+        sidebar.classList.contains("active") &&
+        !sidebar.contains(event.target) &&
+        event.target !== burger &&
+        !burger.contains(event.target)
+    ) {
+        sidebar.classList.remove("active");
+    }
+});
+</script>
+
+
+    </body>
+
+    </html>

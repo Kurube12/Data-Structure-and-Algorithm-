@@ -1,0 +1,137 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="styles.css">
+    
+    </head>
+    
+    <body>
+    <nav class="navbar">
+        <div class="burger" onclick="toggleSidebar()">
+    ☰
+</div>
+
+        <div class="nav-container">
+            <a href="#home" class="logo">CC-104</a>
+        <div class="nav-links">
+            <a href="#home">Stacks</a>
+            <a href="sorting.html">Searching & Sorting</a>
+            <a href="traversal.html">Tree Traversal</a>
+            
+        </div>
+        </div>
+        </nav>
+    
+
+        <nav id="sidebar" class="side-bar">
+    <a href="#stacks">Stacks</a>
+    <a href="#queue">Queue</a>
+    <a href="#trees">Trees</a>
+    <a href="#graph">Graph</a>
+</nav>
+
+        <main>
+            <h1>Data Structure and Algorithm</h1>
+<hr>
+
+
+
+            <section id="data-structure" class="Data">
+               
+        <div id="stacks" class="data-structure-section">
+            <h2>Stacks</h2>
+            
+
+   <input type="text" id="stack-numbers" placeholder="Enter a number">
+
+<button onclick="pushNumber()">Push</button>
+<button onclick="popNumber()">Pop</button>
+
+<div id="stackOutputBox">Stack is empty.</div>
+
+<script src="script.js"></script>
+</div>
+
+            <div id="queues" class="data-structure-section">
+            <h2>Queues</h2> 
+            <input type="text" id="queue-numbers" placeholder="Enter a number">
+
+<button onclick="enqueueNumber()">Enqueue</button>
+<button onclick="dequeueNumber()">Dequeue</button>
+
+<div id="queueOutputBox">Queue is empty.</div>
+
+<!-- Link the queue JS file -->
+<script src="dataStructure.js"></script>
+
+            <div id="trees" class="data-structure-section">
+            <h2>Trees</h2>  
+               <div class="controls">
+        <input id="nodeInput" placeholder="Enter node value">
+    <button onclick="addNode()">Add Node</button>
+
+        <button onclick="clearBtn()">Reset Tree</button>
+    </div>
+
+
+
+    <h3>Tree Visualization:</h3>
+    <div id="treeContainer"></div>
+
+    <script src="dataStructure.js"></script>
+    </div>
+
+
+            <div id="graph" class="data-structure-section">
+            <h2>Graph</h2>   
+            <p>The window object has several methods that allow you to interact with the browser window. Some commonly used methods include:</p>
+            </div>
+
+
+
+            
+        </div>
+        
+        </section>
+
+
+            
+
+    </div>
+        
+
+    </main>
+   <script>
+function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+}
+
+// Close sidebar if clicking outside of it
+document.addEventListener("click", function(event) {
+    const sidebar = document.getElementById("sidebar");
+    const burger = document.querySelector(".burger");
+
+    // conditions:
+    // 1. sidebar is open
+    // 2. clicked element is NOT sidebar
+    // 3. clicked element is NOT inside sidebar
+    // 4. clicked element is NOT the burger button
+    // 5. clicked element is NOT inside the burger
+    if (
+        sidebar.classList.contains("active") &&
+        !sidebar.contains(event.target) &&
+        event.target !== burger &&
+        !burger.contains(event.target)
+    ) {
+        sidebar.classList.remove("active");
+    }
+});
+</script>
+
+
+    </body>
+
+    </html>

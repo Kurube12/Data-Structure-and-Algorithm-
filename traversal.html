@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Tree Traversal Visualizer</title>
+    <link rel="stylesheet" href="traversal.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="burger" onclick="toggleSidebar()">☰</div>
+            <a href="#home" class="logo">CC-104</a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Stacks</a>
+            <a href="sorting.html">Searching & Sorting</a>
+            <a href="#home">Tree Traversal</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="side-bar">
+        <a href="#stacks">Stacks</a>
+        <a href="#queue">Queue</a>
+        <a href="#trees">Trees</a>
+        <a href="#graph">Graph</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <header>
+            <h1>Tree Traversal Visualizer</h1>
+            <p>Interactively add nodes and see different traversal orders of a binary tree.</p>
+        </header>
+
+        <section class="tree-input">
+            <input id="nodeInput" type="text" placeholder="Enter node value">
+            <button class="btn" onclick="addNode()">Add Node</button>
+        </section>
+
+        <section class="traversals">
+            <h3>Traversals:</h3>
+            <div class="buttons-group">
+                <button class="btn traversal-btn" onclick="preOrder()">Pre-Order</button>
+                <button class="btn traversal-btn" onclick="inOrder()">In-Order</button>
+                <button class="btn traversal-btn" onclick="postOrder()">Post-Order</button>
+            </div>
+        </section>
+
+        <section class="output">
+            <h3>Traversal Output:</h3>
+            <p id="traversalOutput" class="output-box"></p>
+        </section>
+
+        <section class="tree-visualization">
+            <h3>Tree Visualization:</h3>
+            <div id="treeContainer" class="tree-container"></div>
+        </section>
+    </main>
+
+    <script src="traversal.js"></script>
+</body>
+</html>
