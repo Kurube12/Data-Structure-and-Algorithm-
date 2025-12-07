@@ -141,12 +141,4 @@ document.getElementById('bubbleQuickInput').addEventListener('input', (e) => {
     quickInput.value = value;
 });
 
-document.getElementById('clearAll').addEventListener('click', (e) => {
-    bubbleInput.value = '';
-    quickInput.value = '';
-    bubbleArray = []; 
-    quickArray = [];
- bubbleQuickInput.value = '';    
-});
 
-/* ================= BINARY TREE TRAVERSAL ANIMATION ================= */
