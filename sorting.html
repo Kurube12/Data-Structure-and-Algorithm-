@@ -91,12 +91,6 @@ document.addEventListener("click", function(event) {
     const sidebar = document.getElementById("sidebar");
     const burger = document.querySelector(".burger");
 
-    // conditions:
-    // 1. sidebar is open
-    // 2. clicked element is NOT sidebar
-    // 3. clicked element is NOT inside sidebar
-    // 4. clicked element is NOT the burger button
-    // 5. clicked element is NOT inside the burger
     if (
         sidebar.classList.contains("active") &&
         !sidebar.contains(event.target) &&
@@ -112,5 +106,6 @@ document.addEventListener("click", function(event) {
     </body>
 
     </html>
+
 
 
