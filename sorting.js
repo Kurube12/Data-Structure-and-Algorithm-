@@ -142,10 +142,11 @@ document.getElementById('bubbleQuickInput').addEventListener('input', (e) => {
 });
 
 document.getElementById('clearAll').addEventListener('clicl', () => {
-    bubbleInput.value = "";
-    quickInput.value = "";
+    bubbleInput.value = '';
+    quickInput.value = '';
     bubbleArray = [];
     quickArray = [];
-    document.getElementById('bubbleQuickInput').value = "";
+    document.getElementById('bubbleQuickInput').value = '';
     )};
     
+
