@@ -186,6 +186,13 @@ button:hover {
     padding: 20px;
 }
 
+.graphControls {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .node {
     width: 60px;
     height: 60px;
@@ -228,3 +235,4 @@ button:hover {
         font-size: 14px;
     }
 }
+
