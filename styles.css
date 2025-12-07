@@ -223,6 +223,12 @@ main {
     margin-bottom: 20px;
 }
 
+#allInputField {
+    padding: 8px;
+    width: 200px;
+    margin-left: 10px;
+}
+
 input[type="number"] {
     padding: 8px;
     width: 200px;
@@ -318,3 +324,4 @@ button {
 }
 
 /* quick sorting ---------------------- */
+
