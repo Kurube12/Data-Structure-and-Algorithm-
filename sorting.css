@@ -135,12 +135,6 @@ body {
     display: block;
 }
 
-/* MAIN CONTENT */
-main {
-    margin-top: 70px;
-    padding: 20px;
-}
-
 /* Responsive */
 @media (max-width: 768px) {
     .nav-links {
@@ -171,7 +165,7 @@ section {
 
 input {
     padding: 10px;
-    width: 250px;
+    width: 300px;
     font-size: 16px;
 }
 
@@ -221,3 +215,4 @@ button {
     white-space: nowrap;
     pointer-events: none;
 }
+
