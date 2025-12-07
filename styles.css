@@ -138,13 +138,6 @@ h1{
     display: block;
 }
 
-
-/* MAIN CONTENT */
-main {
-    margin-top: 70px;
-    padding: 20px;
-}
-
 /* Responsive */
 @media (max-width: 768px) {
     .nav-links {
@@ -324,4 +317,5 @@ button {
 }
 
 /* quick sorting ---------------------- */
+
 
