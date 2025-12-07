@@ -1,147 +1,104 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Data Stucture and Algorithm</title>
-        <link rel="stylesheet" href="styles.css">
-    
-    </head>   
-    <body>
-        
-    <nav class="navbar">
-        <div class="burger" onclick="toggleSidebar()"> ☰ </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Structures</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-        <div class="nav-container">
-            <a href="#home" class="logo">CC-104</a>
-               <div class="nav-links">
-                 <a href="#home">Stacks</a>
-                 <a href="sorting.html">Searching & Sorting</a>
-                  <a href="traversal.html">Tree Traversal</a> 
-               </div>
+<nav class="navbar">
+    <div class="burger" onclick="toggleSidebar()">☰</div>
+    <div class="nav-container">
+        <a href="#home" class="logo">CC-104</a>
+        <div class="nav-links">
+            <a href="#stacks">Stacks</a>
+            <a href="sorting.html">Searching & Sorting</a>
+            <a href="traversal.html">Tree Traversal</a>
         </div>
-    </nav>
-    
+    </div>
+</nav>
 
-        <nav id="sidebar" class="side-bar">
+<nav id="sidebar" class="side-bar">
     <a href="#stacks">Stacks</a>
-    <a href="#queue">Queue</a>
+    <a href="#queues">Queue</a>
     <a href="#trees">Trees</a>
     <a href="#graph">Graph</a>
 </nav>
 
-        <main>
-            <h1>Data Structure and Algorithm</h1>
-<hr>
+<main>
+    <h1>Data Structure and Algorithm</h1>
+    <hr>
 
-          
-
-            <section id="data-structure" class="Data">
-                   <div id="allInputContainer">
-        <h1>All Input</h1>
-        <input type="text" id="allInputField" placeholder="Enter a number">
+    <section id="data-structure" class="Data">
+        <!-- All Input Field -->
+        
+         <h1>All Input<input type="text" id="allInputField" placeholder="Enter a number">
         <button id="allInputBtn">Add</button>
         <button id="allDeleteBtn">Delete</button>
-                   </div>
+</h1>
+        <!-- STACK -->
+        <div id="stacks" class="data-structure-section">
+            <h2>Stacks</h2>
+            <input type="text" id="stack-numbers" placeholder="Enter a number">
+            <button onclick="pushNumber()">Push</button>
+            <button onclick="popNumber()">Pop</button>
+            <div id="stackOutputBox">Stack is empty.</div>
+        </div>
 
-               
-       <!-- STACK -->
-<div id="stacks" class="data-structure-section">
-    <h2>Stacks</h2>
+        <!-- QUEUE -->
+        <div id="queues" class="data-structure-section">
+            <h2>Queues</h2>
+            <input type="text" id="queue-numbers" placeholder="Enter a number">
+            <button onclick="enqueueNumber()">Enqueue</button>
+            <button onclick="dequeueNumber()">Dequeue</button>
+            <div id="queueOutputBox">Queue is empty.</div>
+        </div>
 
-    <!-- Output box on top -->
-    <div id="stackOutputBox">Stack is empty.</div>
+        <!-- TREES -->
+        <div id="trees" class="data-structure-section">
+            <h2>Trees</h2>
+            <div class="controls">
+                <input id="nodeInput" placeholder="Enter node value">
+                <button onclick="addNode()">Add Node</button>
+                <button onclick="clearBtn()">Reset Tree</button>
+            </div>
+            <h3>Tree Visualization:</h3>
+            <div id="treeContainer"></div>
+        </div>
 
-    <!-- Controls below output -->
-    <div class="stackControls">
-        <input type="text" id="stack-numbers" placeholder="Enter a number">
-        <button onclick="pushNumber()">Push</button>
-        <button onclick="popNumber()">Pop</button>
-    </div>
-</div>
+        <!-- GRAPH -->
+        <div id="graph" class="data-structure-section">
+            <h2>Graph</h2>
+            <div class="graphControls">
+                <input id="graphNodeInput" placeholder="Enter node value">
+                <button onclick="addGraph()">Add Node</button>
+                <button onclick="clearGraph()">Reset Tree</button>
+            </div>
+            <h3>Tree Visualization:</h3>
+            <div id="treeContainer"></div>
+        </div>
+    </section>
+</main>
 
-<!-- QUEUE -->
-<div id="queues" class="data-structure-section">
-    <h2>Queues</h2>
+<script src="dataStructure.js"></script>
 
-    <!-- Output box on top -->
-    <div id="queueOutputBox">Queue is empty.</div>
-
-    <!-- Controls below output -->
-    <div class="queueControls">
-        <input type="text" id="queue-numbers" placeholder="Enter a number">
-        <button onclick="enqueueNumber()">Enqueue</button>
-        <button onclick="dequeueNumber()">Dequeue</button>
-    </div>
-</div>
-
-<!-- TREE -->
-<div id="trees" class="data-structure-section">
-    <h2>Trees</h2>
-
-    <!-- Visualization on top -->
-    <h3>Tree Visualization:</h3>
-    <div id="treeContainer"></div>
-
-    <!-- Controls below visualization -->
-    <div class="treeControls">
-        <input id="treeNodeInput" placeholder="Enter node value">
-        <button onclick="addTreeNode()">Add Node</button>
-        <button onclick="clearTree()">Reset Tree</button>
-    </div>
-</div>
-
-<!-- GRAPH -->
-<div id="graph" class="data-structure-section">
-    <h2>Graph</h2>
-
-    <!-- Visualization on top -->
-    <h3>Graph Visualization:</h3>
-    <div id="graphContainer"></div>
-
-    <!-- Controls below visualization -->
-    <div class="graphControls">
-        <input id="graphInput" placeholder="Enter node value">
-        <button onclick="addGraphNode()">Add Node</button>
-        <button onclick="clearGraph()">Reset Graph</button>
-    </div>
-</div>
-
-
-        
-        </section>
-    </div>
-    </main>
-
-        <script src=script.js></script>
-   <script>
+<script>
 function toggleSidebar() {
     document.getElementById("sidebar").classList.toggle("active");
 }
-
-// Close sidebar if clicking outside of it
 document.addEventListener("click", function(event) {
     const sidebar = document.getElementById("sidebar");
     const burger = document.querySelector(".burger");
-
-    if (
-        sidebar.classList.contains("active") &&
+    if (sidebar.classList.contains("active") &&
         !sidebar.contains(event.target) &&
         event.target !== burger &&
-        !burger.contains(event.target)
-    ) {
+        !burger.contains(event.target)) {
         sidebar.classList.remove("active");
     }
 });
 </script>
-        
-    </body>
-    </html>
 
-
-
-
-
-
-
-
+</body>
+</html>
