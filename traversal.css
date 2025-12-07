@@ -138,20 +138,12 @@ h1{
     display: block;
 }
 
-
-/* MAIN CONTENT */
-main {
-    margin-top: 70px;
-    padding: 20px;
-}
-
 /* Responsive */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
     }
 }
-
 /* ===== MAIN CONTENT ===== */
 main {
     margin-top: 110px;
@@ -325,4 +317,5 @@ input, button {
         font-size: 1.5rem;
     }
 }
+
 
