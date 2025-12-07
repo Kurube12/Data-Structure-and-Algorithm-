@@ -84,8 +84,17 @@
     </div>
             <div id="graph" class="data-structure-section">
             <h2>Graph</h2>   
-            <p>The window object has several methods that allow you to interact with the browser window. Some commonly used methods include:</p>
-            </div>
+<div class="graphControls">
+        <input id="graphInput" placeholder="Enter node value">
+    <button onclick="addGGraph()">Add Node</button>
+              
+                
+        <button onclick="clearGraph()">Reset Graph</button>
+    </div>
+
+    <h3>Graph Visualization:</h3>
+    <div id="graphContainer"></div>
+        
         </div>
         
         </section>
@@ -116,6 +125,7 @@ document.addEventListener("click", function(event) {
         
     </body>
     </html>
+
 
 
 
