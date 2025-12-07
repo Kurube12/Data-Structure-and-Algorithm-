@@ -142,12 +142,15 @@ document.getElementById('bubbleQuickInput').addEventListener('input', (e) => {
 });
 
 document.getElementById('clearAll').addEventListener('click', (e) => {
+    bubbleInput.value = '';
+    quickInput.value = '';
     bubbleArray = []; 
     quickArray = [];
     
 });
 
 /* ================= BINARY TREE TRAVERSAL ANIMATION ================= */
+
 
 
 
