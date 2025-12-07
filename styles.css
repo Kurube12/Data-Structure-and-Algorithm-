@@ -6,8 +6,12 @@
 }
 
 body {
-    background: #010f25;
-   color: #ffffff;
+      background: #010f25;
+    color: #000000;
+}
+
+h1{
+    color: #ffffff;
 }
 
 /* ===== NAVBAR ===== */
@@ -18,7 +22,7 @@ body {
     width: 100%;
     background: linear-gradient(90deg, #1a1a1a, #333333);
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
     height: 70px;
     z-index: 999;
@@ -58,7 +62,7 @@ body {
     font-weight: bold;
     color: #00adee;
     text-decoration: none;
-    margin-left: 60px; 
+    margin-left: 60px;
 }
 
 .nav-links {
@@ -86,13 +90,13 @@ body {
 .side-bar {
     position: fixed;
     top: 70px;
-    left: -260px; 
+    left: -260px;
     width: 220px;
     height: 100vh;
     background: #1a1a1a;
     padding: 25px 20px;
     transition: left 0.3s ease;
-    z-index: 1001; /* above overlay */
+    z-index: 1001; 
     box-shadow: 2px 0 12px rgba(0,0,0,0.2);
 }
 
@@ -124,7 +128,7 @@ body {
     width: 100%;
     height: calc(100vh - 70px);
     background: rgba(0,0,0,0.3);
-    z-index: 1000; /* below sidebar */
+    z-index: 1000; 
 }
 
 .overlay.active {
@@ -138,6 +142,7 @@ body {
     }
 }
 
+
 /* MAIN CONTENT */
 main {
     margin-top: 110px;
@@ -145,6 +150,7 @@ main {
     margin-left: auto;
     margin-right: auto;
 }
+ 
 
 .data-structure-section {
     background: #fff;
@@ -154,29 +160,55 @@ main {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Visible output boxes */
-#stackOutputBox, #queueOutputBox {
-    width: 100%;
-    height: 160px;
-    border: 2px solid #333;
-    background: #fafafa;
-    padding: 10px;
-    margin-top: 15px;
-    border-radius: 5px;
-    white-space: pre-wrap;
-    overflow-y: auto;
-}
+/* Visible output box */
+        #stackOutputBox {
+            width: 100%;
+            height: 160px;
+            border: 2px solid #333;
+            background: #fafafa;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            overflow-y: auto;
+        }
 
-input {
-    padding: 8px;
-    width: 300px;
-    margin-right: 10px;
-}
+        input {
+            padding: 8px;
+            width: 300px;
+            margin-right: 10px;
+        }
 
-button {
-    padding: 8px 15px;
-    cursor: pointer;
-}
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+/* Visible output box */
+        #queueOutputBox {
+            width: 100%;
+            height: 160px;
+            border: 2px solid #333;
+            background: #fafafa;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            overflow-y: auto;
+        }
+
+        input {
+            padding: 8px;
+            width: 300px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+
 
 .controls {
     margin-bottom: 20px;
@@ -236,8 +268,8 @@ button {
     background: black;
 }
 
+
 h1 {
-    color: #ffffff;
     margin-bottom: 20px;
 }
 
