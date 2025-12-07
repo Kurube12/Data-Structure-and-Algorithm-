@@ -22,7 +22,7 @@ h1{
     width: 100%;
     background: linear-gradient(90deg, #1a1a1a, #333333);
     display: flex;
-    justify-content: center; /* center nav links container */
+    justify-content: center;
     align-items: center;
     height: 70px;
     z-index: 999;
@@ -38,7 +38,6 @@ h1{
     position: relative;
 }
 
-/* Burger button on left */
 .burger {
     font-size: 28px;
     color: white;
@@ -48,7 +47,7 @@ h1{
     border-radius: 6px;
     transition: all 0.3s ease;
     position: absolute;
-    left: 20px; /* flush left */
+    left: 20px;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -58,16 +57,15 @@ h1{
     transform: translateY(-50%) scale(1.1);
 }
 
-/* Logo */
+
 .logo {
     font-size: 1.8rem;
     font-weight: bold;
     color: #00adee;
     text-decoration: none;
-    margin-left: 60px; /* leave space for burger */
+    margin-left: 60px; 
 }
 
-/* Nav links near center */
 .nav-links {
     position: absolute;
     left: 50%;
@@ -93,7 +91,7 @@ h1{
 .side-bar {
     position: fixed;
     top: 70px;
-    left: -260px; /* hidden by default */
+    left: -260px;
     width: 220px;
     height: 100vh;
     background: #1a1a1a;
@@ -174,13 +172,11 @@ p {
     color: #cccccc;
 }  
 
-/* Generic input/button */
 input, button {
     font-size: 16px;
     padding: 10px;
 }
 
-/* Control-panel overrides */
 .control-panel input {
     width: 90%;
     padding: 18px;
@@ -236,15 +232,15 @@ input, button {
 }
 
 .output-box {
-    background-color: #1f1f1f;   /* dark background */
-    color: #ffffff;             /* text color */
-    padding: 15px 20px;         /* inner spacing */
-    border-radius: 12px;        /* rounded corners */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* subtle shadow */
+    background-color: #1f1f1f;  
+    color: #ffffff;            
+    padding: 15px 20px;    
+    border-radius: 12px;      
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
     font-size: 1.2rem;
-    min-height: 50px;           /* ensures box is visible even if empty */
+    min-height: 50px;     
     margin-top: 20px;
-    white-space: pre-wrap;      /* preserves line breaks for multiple values */
+    white-space: pre-wrap;   
 }
 
 
@@ -317,5 +313,6 @@ input, button {
         font-size: 1.5rem;
     }
 }
+
 
 
