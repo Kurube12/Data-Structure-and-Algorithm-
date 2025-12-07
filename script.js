@@ -162,3 +162,29 @@ function clearBtn() {
 
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    const allInputField = document.getElementById("allInputField");
+    const allInputBtn = document.getElementById("allInputBtn");
+    const allDeleteBtn = document.getElementById("allDeleteBtn");
+
+    allInputField.addEventListener("input", (e) => {
+        const value = e.target.value.trim();
+        document.getElementById("stack-numbers").value = value;
+        document.getElementById("queue-numbers").value = value;
+        document.getElementById("nodeInput").value = value;
+    });
+
+    allInputBtn.addEventListener("click", () => {
+        pushNumber();
+        enqueueNumber();
+        addNode();
+
+        allInputField.value = "";
+    });
+
+    allDeleteBtn.addEventListener("click", () => {
+        popNumber();
+        dequeueNumber();
+        clearBtn();
+    });
+});
