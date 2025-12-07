@@ -146,9 +146,10 @@ document.getElementById('clearAll').addEventListener('click', (e) => {
     quickInput.value = '';
     bubbleArray = [];
     quickArray = [];
-    document.getElementById('bubbleQuickInput').value = '';
+    bubbleQuickInput.value = '';
     )};
     
+
 
 
 
