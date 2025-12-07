@@ -68,34 +68,30 @@
 <div id="queueOutputBox">Queue is empty.</div>
  </div>
                 
-            <div id="trees" class="data-structure-section">
-            <h2>Trees</h2>  
-               <div class="controls">
-        <input id="nodeInput" placeholder="Enter node value">
-    <button onclick="addNode()">Add Node</button>
-              
-                
-        <button onclick="clearBtn()">Reset Tree</button>
+            <!-- Tree -->
+<div id="trees" class="data-structure-section">
+    <h2>Trees</h2>
+    <div class="controls">
+        <input id="treeNodeInput" placeholder="Enter node value">
+        <button onclick="addTreeNode()">Add Node</button>
+        <button onclick="clearTree()">Reset Tree</button>
     </div>
-
     <h3>Tree Visualization:</h3>
     <div id="treeContainer"></div>
+</div>
 
-    </div>
-            <div id="graph" class="data-structure-section">
-            <h2>Graph</h2>   
-<div class="graphControls">
+<!-- Graph -->
+<div id="graph" class="data-structure-section">
+    <h2>Graph</h2>
+    <div class="graphControls">
         <input id="graphInput" placeholder="Enter node value">
-    <button onclick="addGGraph()">Add Node</button>
-              
-                
+        <button onclick="addGraphNode()">Add Node</button>
         <button onclick="clearGraph()">Reset Graph</button>
     </div>
-
     <h3>Graph Visualization:</h3>
     <div id="graphContainer"></div>
-        
-        </div>
+</div>
+
         
         </section>
     </div>
@@ -125,6 +121,7 @@ document.addEventListener("click", function(event) {
         
     </body>
     </html>
+
 
 
 
