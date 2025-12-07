@@ -130,7 +130,17 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+document.getElementById('bubbleQuickInput').addEventListener('input', (e) => {
+    const value = e.target.value;
+    bubbleInput.value = value;
+    quickInput.value = value;
+});
+
 document.getElementById('sortAll').addEventListener('click', () => {
     bubbleSortBtn.click();
     quickSortBtn.click();
+
 });
