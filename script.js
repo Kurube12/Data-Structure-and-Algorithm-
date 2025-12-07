@@ -165,7 +165,7 @@ function clearTree() {
     document.getElementById("treeContainer").innerHTML = "";
 }
 
-/* ================= GRAPH (Fixed) ================== */
+/* ================= GRAPH ================== */
 
 let graphRoot = null;
 
