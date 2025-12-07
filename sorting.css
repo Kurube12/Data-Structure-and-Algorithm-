@@ -19,7 +19,7 @@ body {
     width: 100%;
     background: linear-gradient(90deg, #1a1a1a, #333333);
     display: flex;
-    justify-content: center; /* center nav links container */
+    justify-content: center;
     align-items: center;
     height: 70px;
     z-index: 999;
@@ -35,7 +35,7 @@ body {
     position: relative;
 }
 
-/* Burger button on left */
+
 .burger {
     font-size: 28px;
     color: white;
@@ -45,7 +45,7 @@ body {
     border-radius: 6px;
     transition: all 0.3s ease;
     position: absolute;
-    left: 20px; /* flush left */
+    left: 20px; 
     top: 50%;
     transform: translateY(-50%);
 }
@@ -55,16 +55,14 @@ body {
     transform: translateY(-50%) scale(1.1);
 }
 
-/* Logo */
 .logo {
     font-size: 1.8rem;
     font-weight: bold;
     color: #00adee;
     text-decoration: none;
-    margin-left: 60px; /* leave space for burger */
+    margin-left: 60px; 
 }
 
-/* Nav links near center */
 .nav-links {
     position: absolute;
     left: 50%;
@@ -180,8 +178,8 @@ button {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    height: 300px; /* fixed container height */
-    overflow: hidden; /* cut top of taller bars */
+    height: 300px; 
+    overflow: hidden; 
     gap: 5px;
     border: 1px solid #ccc;
     padding-bottom: 5px;
@@ -205,14 +203,15 @@ button {
 
 .bar span {
     position: absolute;
-    bottom: 100%; /* place above the bar */
+    bottom: 100%; /
     left: 50%;
     transform: translateX(-50%);
     font-size: 10px; /* small font */
     font-weight: bold;
     color: #111;
-    margin-bottom: 2px; /* small gap between number and bar */
+    margin-bottom: 2px; 
     white-space: nowrap;
     pointer-events: none;
 }
+
 
