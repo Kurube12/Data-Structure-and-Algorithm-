@@ -140,3 +140,12 @@ document.getElementById('bubbleQuickInput').addEventListener('input', (e) => {
     bubbleInput.value = value;
     quickInput.value = value;
 });
+
+document.getElementById('clearAll').addEventListener('clicl', () => {
+    bubbleInput.value = "";
+    quickInput.value = "";
+    bubbleArray = [];
+    quickArray = [];
+    document.getElementById('bubbleQuickInput').value = "";
+    )};
+    
