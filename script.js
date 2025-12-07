@@ -77,29 +77,25 @@ class TreeNode {
 
 let treeRoot = null;
 
-function addTreeNode() {
-    const input = document.getElementById("treeNodeInput");
+function addNode() {
+    const input = document.getElementById("nodeInput");
     const value = input.value.trim();
     if (!value) return;
 
-    treeRoot = insertTreeNode(treeRoot, Number(value));
-    layoutTreeNodes(treeRoot, 0, 600, 40, 90);
-    visualizeTreeNodes();
+    treeRoot = insertNode(treeRoot, Number(value));
+    layoutTree(treeRoot, 0, 600, 40, 90);
+    visualizeTree();
     input.value = "";
 }
 
-document.getElementById("treeNodeInput").addEventListener("keyup", e => {
-    if (e.key === "Enter") addTreeNode();
-});
-
-function insertTreeNode(node, value) {
+function insertNode(node, value) {
     if (!node) return new TreeNode(value);
-    if (value < node.value) node.left = insertTreeNode(node.left, value);
-    else node.right = insertTreeNode(node.right, value);
+    if (value < node.value) node.left = insertNode(node.left, value);
+    else node.right = insertNode(node.right, value);
     return node;
 }
 
-function layoutTreeNodes(node, minX, maxX, y, spacing) {
+function layoutTree(node, minX, maxX, y, spacing) {
     if (!node) return;
     node.y = y;
 
@@ -108,21 +104,21 @@ function layoutTreeNodes(node, minX, maxX, y, spacing) {
         return;
     }
 
-    if (node.left) layoutTreeNodes(node.left, minX, (minX + maxX) / 2, y + spacing, spacing);
-    if (node.right) layoutTreeNodes(node.right, (minX + maxX) / 2, maxX, y + spacing, spacing);
+    if (node.left) layoutTree(node.left, minX, (minX + maxX) / 2, y + spacing, spacing);
+    if (node.right) layoutTree(node.right, (minX + maxX) / 2, maxX, y + spacing, spacing);
 
     node.x = node.left && node.right
         ? (node.left.x + node.right.x) / 2
         : node.left ? node.left.x : node.right.x;
 }
 
-function visualizeTreeNodes() {
+function visualizeTree() {
     const container = document.getElementById("treeContainer");
     container.innerHTML = "";
-    drawTreeNode(treeRoot, container);
+    drawNode(treeRoot, container);
 }
 
-function drawTreeNode(node, container) {
+function drawNode(node, container) {
     if (!node) return;
 
     const element = document.createElement("div");
@@ -134,16 +130,16 @@ function drawTreeNode(node, container) {
     container.appendChild(element);
 
     if (node.left) {
-        drawTreeLine(container, node.x + 30, node.y + 30, node.left.x + 30, node.left.y + 30);
-        drawTreeNode(node.left, container);
+        drawLine(container, node.x + 30, node.y + 30, node.left.x + 30, node.left.y + 30);
+        drawNode(node.left, container);
     }
     if (node.right) {
-        drawTreeLine(container, node.x + 30, node.y + 30, node.right.x + 30, node.right.y + 30);
-        drawTreeNode(node.right, container);
+        drawLine(container, node.x + 30, node.y + 30, node.right.x + 30, node.right.y + 30);
+        drawNode(node.right, container);
     }
 }
 
-function drawTreeLine(container, x1, y1, x2, y2) {
+function drawLine(container, x1, y1, x2, y2) {
     const line = document.createElement("div");
     const length = Math.hypot(x2 - x1, y2 - y1);
     const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
@@ -160,97 +156,9 @@ function drawTreeLine(container, x1, y1, x2, y2) {
     container.appendChild(line);
 }
 
-function clearTree() {
+function clearBtn() {
     treeRoot = null;
     document.getElementById("treeContainer").innerHTML = "";
-}
-
-/* ================= GRAPH ================== */
-
-let graphRoot = null;
-
-function addGraphNode() {
-    const input = document.getElementById("graphInput");
-    const value = input.value.trim();
-    if (!value) return;
-
-    graphRoot = insertGraphNode(graphRoot, Number(value));
-    layoutGraphNodes(graphRoot, 0, 600, 40, 90);
-    visualizeGraphNodes();
-    input.value = "";
-}
-
-function insertGraphNode(node, value) {
-    if (!node) return new TreeNode(value);
-    if (value < node.value) node.left = insertGraphNode(node.left, value);
-    else node.right = insertGraphNode(node.right, value);
-    return node;
-}
-
-function layoutGraphNodes(node, minX, maxX, y, spacing) {
-    if (!node) return;
-    node.y = y;
-
-    if (!node.left && !node.right) {
-        node.x = (minX + maxX) / 2;
-        return;
-    }
-
-    if (node.left) layoutGraphNodes(node.left, minX, (minX + maxX) / 2, y + spacing, spacing);
-    if (node.right) layoutGraphNodes(node.right, (minX + maxX) / 2, maxX, y + spacing, spacing);
-
-    node.x = node.left && node.right
-        ? (node.left.x + node.right.x) / 2
-        : node.left ? node.left.x : node.right.x;
-}
-
-function visualizeGraphNodes() {
-    const container = document.getElementById("graphContainer");
-    container.innerHTML = "";
-    drawGraphNode(graphRoot, container);
-}
-
-function drawGraphNode(node, container) {
-    if (!node) return;
-
-    const element = document.createElement("div");
-    element.className = "node";
-    element.style.left = node.x + "px";
-    element.style.top = node.y + "px";
-    element.style.position = "absolute";
-    element.textContent = node.value;
-    container.appendChild(element);
-
-    if (node.left) {
-        drawGraphLine(container, node.x + 30, node.y + 30, node.left.x + 30, node.left.y + 30);
-        drawGraphNode(node.left, container);
-    }
-    if (node.right) {
-        drawGraphLine(container, node.x + 30, node.y + 30, node.right.x + 30, node.right.y + 30);
-        drawGraphNode(node.right, container);
-    }
-}
-
-function drawGraphLine(container, x1, y1, x2, y2) {
-    const line = document.createElement("div");
-    const length = Math.hypot(x2 - x1, y2 - y1);
-    const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
-
-    line.style.position = "absolute";
-    line.style.width = length + "px";
-    line.style.height = "2px";
-    line.style.left = x1 + "px";
-    line.style.top = y1 + "px";
-    line.style.transformOrigin = "0 0";
-    line.style.transform = `rotate(${angle}deg)`;
-    line.style.background = "#000";
-
-    container.appendChild(line);
-}
-
-function clearGraph() {
-    graphRoot = null;
-    document.getElementById("graphContainer").innerHTML = "";
 }
 
 /* ================= ALL INPUT CONTROLLER ================== */
@@ -264,22 +172,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const value = e.target.value.trim();
         document.getElementById("stack-numbers").value = value;
         document.getElementById("queue-numbers").value = value;
-        document.getElementById("treeNodeInput").value = value;
-        document.getElementById("graphInput").value = value;
+        document.getElementById("nodeInput").value = value;
     });
 
     allInputBtn.addEventListener("click", () => {
         pushNumber();
         enqueueNumber();
-        addTreeNode();
-        addGraphNode();
+        addNode();
         allInputField.value = "";
     });
 
     allDeleteBtn.addEventListener("click", () => {
         popNumber();
         dequeueNumber();
-        clearTree();
-        clearGraph();
+        clearBtn();
     });
 });
