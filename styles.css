@@ -167,7 +167,8 @@ button:hover {
     border: 2px solid #333;
     background: #fafafa;
     padding: 10px;
-    margin-top: 15px;
+    margin-top: 10px;
+    margin-bottom: 15px;
     border-radius: 5px;
     white-space: pre-wrap;
     overflow-y: auto;
@@ -184,13 +185,7 @@ button:hover {
     box-shadow: 0 4px 14px rgba(0,0,0,0.12);
     overflow: auto;
     padding: 20px;
-}
-
-.graphControls {
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    margin-bottom: 15px; /* space below visualization for controls */
 }
 
 .node {
@@ -204,7 +199,7 @@ button:hover {
     align-items: center;
     font-weight: bold;
     position: absolute;
-    z-index: 2; /* Ensure nodes are above lines */
+    z-index: 2; /* nodes above lines */
     transition: 0.4s ease;
 }
 
@@ -217,22 +212,45 @@ button:hover {
     position: absolute;
     width: 2px;
     background: black;
-    z-index: 1; /* Ensure lines are behind nodes */
+    z-index: 1; /* behind nodes */
 }
 
-/* ================= RESPONSIVE ================== */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-    }
-
-    input[type="text"], input[type="number"] {
-        width: 180px;
-    }
-
-    button {
-        padding: 8px 16px;
-        font-size: 14px;
-    }
+/* ================= CONTROLS ================== */
+.stackControls,
+.queueControls,
+.treeControls,
+.graphControls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
 }
 
+/* Input fields */
+input[type="text"], input[type="number"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background: #00adee;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: #007bb5;
+}
+
+/* Margin below each section */
+.data-structure-section {
+    margin-bottom: 30px;
+}
