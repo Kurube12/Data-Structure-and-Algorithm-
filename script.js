@@ -1,13 +1,12 @@
 /* ================= STACK ================== */
 let stack = [];
 
-function updateStackOutput() {
+function updateOutput() {
     const output = document.getElementById("stackOutputBox");
     if (stack.length === 0) {
         output.textContent = "Stack is empty.";
     } else {
-        output.textContent =
-            "Stack: " + stack.join(", ") +
+        output.textContent = "Stack: " + stack.join(", ") +
             "\nTop Element: " + stack[stack.length - 1];
     }
 }
@@ -17,20 +16,18 @@ function pushNumber() {
     if (input === "") return alert("Enter a number.");
     const num = Number(input);
     if (isNaN(num)) return alert("Invalid number.");
-
     stack.push(num);
     document.getElementById("stack-numbers").value = "";
-    updateStackOutput();
+    updateOutput();
 }
 
 function popNumber() {
     if (stack.length === 0) return alert("Stack empty.");
     stack.pop();
-    updateStackOutput();
+    updateOutput();
 }
 
 /* ================= QUEUE ================== */
-
 let queue = [];
 
 function updateQueueOutput() {
@@ -38,8 +35,7 @@ function updateQueueOutput() {
     if (queue.length === 0) {
         output.textContent = "Queue is empty.";
     } else {
-        output.textContent =
-            "Queue: " + queue.join(", ") +
+        output.textContent = "Queue: " + queue.join(", ") +
             "\nFront: " + queue[0] +
             "\nRear: " + queue[queue.length - 1];
     }
@@ -48,10 +44,8 @@ function updateQueueOutput() {
 function enqueueNumber() {
     const input = document.getElementById("queue-numbers").value.trim();
     if (input === "") return alert("Enter a number.");
-
     const num = Number(input);
     if (isNaN(num)) return alert("Invalid number.");
-
     queue.push(num);
     document.getElementById("queue-numbers").value = "";
     updateQueueOutput();
@@ -64,7 +58,6 @@ function dequeueNumber() {
 }
 
 /* ================= BINARY TREE ================== */
-
 class TreeNode {
     constructor(value) {
         this.value = value;
@@ -74,16 +67,15 @@ class TreeNode {
         this.y = 0;
     }
 }
-
-let treeRoot = null;
+let root = null;
 
 function addNode() {
     const input = document.getElementById("nodeInput");
     const value = input.value.trim();
     if (!value) return;
 
-    treeRoot = insertNode(treeRoot, Number(value));
-    layoutTree(treeRoot, 0, 600, 40, 90);
+    root = insertNode(root, Number(value));
+    layoutTree(root, 0, 600, 40, 90);
     visualizeTree();
     input.value = "";
 }
@@ -107,15 +99,14 @@ function layoutTree(node, minX, maxX, y, spacing) {
     if (node.left) layoutTree(node.left, minX, (minX + maxX) / 2, y + spacing, spacing);
     if (node.right) layoutTree(node.right, (minX + maxX) / 2, maxX, y + spacing, spacing);
 
-    node.x = node.left && node.right
-        ? (node.left.x + node.right.x) / 2
-        : node.left ? node.left.x : node.right.x;
+    node.x = node.left && node.right ? (node.left.x + node.right.x) / 2 :
+        node.left ? node.left.x : node.right.x;
 }
 
 function visualizeTree() {
     const container = document.getElementById("treeContainer");
     container.innerHTML = "";
-    drawNode(treeRoot, container);
+    drawNode(root, container);
 }
 
 function drawNode(node, container) {
@@ -123,9 +114,9 @@ function drawNode(node, container) {
 
     const element = document.createElement("div");
     element.className = "node";
+    element.style.position = "absolute";
     element.style.left = node.x + "px";
     element.style.top = node.y + "px";
-    element.style.position = "absolute";
     element.textContent = node.value;
     container.appendChild(element);
 
@@ -143,7 +134,6 @@ function drawLine(container, x1, y1, x2, y2) {
     const line = document.createElement("div");
     const length = Math.hypot(x2 - x1, y2 - y1);
     const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
-
     line.style.position = "absolute";
     line.style.width = length + "px";
     line.style.height = "2px";
@@ -152,23 +142,21 @@ function drawLine(container, x1, y1, x2, y2) {
     line.style.transformOrigin = "0 0";
     line.style.transform = `rotate(${angle}deg)`;
     line.style.background = "#000";
-
     container.appendChild(line);
 }
 
 function clearBtn() {
-    treeRoot = null;
+    root = null;
     document.getElementById("treeContainer").innerHTML = "";
 }
 
-/* ================= ALL INPUT CONTROLLER ================== */
-
+/* ================= ALL INPUT FIELD ================== */
 document.addEventListener("DOMContentLoaded", () => {
     const allInputField = document.getElementById("allInputField");
     const allInputBtn = document.getElementById("allInputBtn");
     const allDeleteBtn = document.getElementById("allDeleteBtn");
 
-    allInputField.addEventListener("input", e => {
+    allInputField.addEventListener("input", (e) => {
         const value = e.target.value.trim();
         document.getElementById("stack-numbers").value = value;
         document.getElementById("queue-numbers").value = value;
@@ -179,6 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
         pushNumber();
         enqueueNumber();
         addNode();
+
         allInputField.value = "";
     });
 
