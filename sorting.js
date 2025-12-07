@@ -1,29 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    /* ================= DOM Elements ================= */
+
+    /* ===== Bubble Sort ===== */
     const bubbleInput = document.getElementById('bubbleInput');
     const bubbleQuickInput = document.getElementById('bubbleQuickInput');
     const bubbleSortBtn = document.getElementById('bubbleSortBtn');
     const bubbleArrayContainer = document.getElementById('bubbleArrayContainer');
     const bubbleOutput = document.getElementById('bubbleOutput');
-
-    const quickInput = document.getElementById('quickInput');
-    const quickSortBtn = document.getElementById('quickSortBtn');
-    const quickArrayContainer = document.getElementById('quickArrayContainer');
-    const quickOutput = document.getElementById('quickOutput');
-
-    const sortAllBtn = document.getElementById('sortAll');
-    const clearAllBtn = document.getElementById('clearAll');
-
     let bubbleArray = [];
-    let quickArray = [];
     const bubbleDelay = 120;
-    const quickDelay = 120;
 
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
-    /* ================= Bubble Sort ================= */
     function displayBubbleArray(highlight = []) {
         bubbleArrayContainer.innerHTML = '';
         bubbleArray.forEach((value, idx) => {
@@ -31,10 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
             bar.classList.add('bar');
             bar.style.height = `${value * 3}px`;
             if (highlight.includes(idx)) bar.classList.add('active');
-
             const label = document.createElement('span');
             label.textContent = value;
-
             bar.appendChild(label);
             bubbleArrayContainer.appendChild(bar);
         });
@@ -59,16 +42,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     bubbleSortBtn.addEventListener('click', () => {
         const values = bubbleInput.value.split(',').map(n => parseInt(n.trim())).filter(n => !isNaN(n));
-        if (values.length === 0) {
-            alert('Enter valid integers separated by commas.');
-            return;
-        }
+        if (values.length === 0) { alert('Enter valid integers.'); return; }
         bubbleArray = values;
         displayBubbleArray();
         bubbleSortVisual();
     });
 
-    /* ================= Quick Sort ================= */
+    /* ===== Quick Sort ===== */
+    const quickInput = document.getElementById('quickInput');
+    const quickSortBtn = document.getElementById('quickSortBtn');
+    const quickArrayContainer = document.getElementById('quickArrayContainer');
+    const quickOutput = document.getElementById('quickOutput');
+    let quickArray = [];
+    const quickDelay = 120;
+
     function displayQuickArray(highlight = [], pivotIndex = null) {
         quickArrayContainer.innerHTML = '';
         quickArray.forEach((value, idx) => {
@@ -77,10 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
             bar.style.height = `${value * 3}px`;
             if (highlight.includes(idx)) bar.classList.add('active');
             if (idx === pivotIndex) bar.classList.add('pivot');
-
             const label = document.createElement('span');
             label.textContent = value;
-
             bar.appendChild(label);
             quickArrayContainer.appendChild(bar);
         });
@@ -89,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function quickSortVisual(start = 0, end = quickArray.length - 1) {
         if (start >= end) return;
-
         let pivotIndex = await partition(start, end);
         await quickSortVisual(start, pivotIndex - 1);
         await quickSortVisual(pivotIndex + 1, end);
@@ -98,10 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
     async function partition(start, end) {
         let pivotValue = quickArray[end];
         let i = start;
-
         displayQuickArray([], end);
         await sleep(quickDelay);
-
         for (let j = start; j < end; j++) {
             displayQuickArray([j, i], end);
             await sleep(quickDelay);
@@ -112,48 +94,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 await sleep(quickDelay);
             }
         }
-
         [quickArray[i], quickArray[end]] = [quickArray[end], quickArray[i]];
         displayQuickArray([], i);
         await sleep(quickDelay);
-
         return i;
     }
 
     quickSortBtn.addEventListener('click', () => {
         const values = quickInput.value.split(',').map(n => parseInt(n.trim())).filter(n => !isNaN(n));
-        if (values.length === 0) {
-            alert('Enter valid integers separated by commas.');
-            return;
-        }
+        if (values.length === 0) { alert('Enter valid integers.'); return; }
         quickArray = values;
         displayQuickArray();
         quickSortVisual();
     });
 
-    /* ================= Bubble + Quick Unified Input ================= */
+    /* ===== Helper ===== */
+    function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+
+    /* ===== Sync Inputs ===== */
     bubbleQuickInput.addEventListener('input', (e) => {
         const value = e.target.value;
         bubbleInput.value = value;
         quickInput.value = value;
     });
 
-    /* ================= Sort All Button ================= */
-    sortAllBtn.addEventListener('click', () => {
+    /* ===== Sort All Button ===== */
+    document.getElementById('sortAll').addEventListener('click', () => {
         bubbleSortBtn.click();
         quickSortBtn.click();
     });
 
-    /* ================= Clear All Button ================= */
-    clearAllBtn.addEventListener('click', () => {
+    /* ===== Clear All Button ===== */
+    document.getElementById('clearAll').addEventListener('click', () => {
         bubbleInput.value = '';
         quickInput.value = '';
         bubbleQuickInput.value = '';
         bubbleArray = [];
         quickArray = [];
-        bubbleArrayContainer.innerHTML = '';
-        quickArrayContainer.innerHTML = '';
-        bubbleOutput.textContent = '';
-        quickOutput.textContent = '';
+        displayBubbleArray();
+        displayQuickArray();
     });
+
 });
