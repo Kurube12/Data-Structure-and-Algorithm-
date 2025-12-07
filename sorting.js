@@ -133,7 +133,6 @@ function sleep(ms) {
 document.getElementById('sortAll').addEventListener('click', () => {
     bubbleSortBtn.click();
     quickSortBtn.click();
-
 });
 
 document.getElementById('bubbleQuickInput').addEventListener('input', (e) => {
