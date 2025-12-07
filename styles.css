@@ -7,7 +7,7 @@
 
 body {
     background: #010f25;
-    color: #000000;
+   color: #ffffff;
 }
 
 /* ===== NAVBAR ===== */
@@ -280,3 +280,4 @@ button {
 .bar.active {
     background-color: #f44336;
 }
+
