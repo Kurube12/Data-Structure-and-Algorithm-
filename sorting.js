@@ -147,8 +147,9 @@ document.getElementById('clearAll').addEventListener('click', (e) => {
     bubbleArray = [];
     quickArray = [];
     bubbleQuickInput.value = '';
-    )};
+});
     
+
 
 
 
