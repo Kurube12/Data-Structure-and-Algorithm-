@@ -6,7 +6,8 @@ function updateOutput() {
     if (stack.length === 0) {
         output.textContent = "Stack is empty.";
     } else {
-        output.textContent = "Stack: " + stack.join(", ") +
+        output.textContent =
+            "Stack: " + stack.join(", ") +
             "\nTop Element: " + stack[stack.length - 1];
     }
 }
@@ -35,7 +36,8 @@ function updateQueueOutput() {
     if (queue.length === 0) {
         output.textContent = "Queue is empty.";
     } else {
-        output.textContent = "Queue: " + queue.join(", ") +
+        output.textContent =
+            "Queue: " + queue.join(", ") +
             "\nFront: " + queue[0] +
             "\nRear: " + queue[queue.length - 1];
     }
@@ -58,6 +60,7 @@ function dequeueNumber() {
 }
 
 /* ================= BINARY TREE ================== */
+
 class TreeNode {
     constructor(value) {
         this.value = value;
@@ -67,6 +70,7 @@ class TreeNode {
         this.y = 0;
     }
 }
+
 let root = null;
 
 function addNode() {
@@ -79,6 +83,10 @@ function addNode() {
     visualizeTree();
     input.value = "";
 }
+
+document.getElementById("nodeInput").addEventListener("keyup", e => {
+    if (e.key === "Enter") addNode();
+});
 
 function insertNode(node, value) {
     if (!node) return new TreeNode(value);
@@ -99,8 +107,9 @@ function layoutTree(node, minX, maxX, y, spacing) {
     if (node.left) layoutTree(node.left, minX, (minX + maxX) / 2, y + spacing, spacing);
     if (node.right) layoutTree(node.right, (minX + maxX) / 2, maxX, y + spacing, spacing);
 
-    node.x = node.left && node.right ? (node.left.x + node.right.x) / 2 :
-        node.left ? node.left.x : node.right.x;
+    node.x = node.left && node.right
+        ? (node.left.x + node.right.x) / 2
+        : node.left ? node.left.x : node.right.x;
 }
 
 function visualizeTree() {
@@ -114,9 +123,9 @@ function drawNode(node, container) {
 
     const element = document.createElement("div");
     element.className = "node";
-    element.style.position = "absolute";
     element.style.left = node.x + "px";
     element.style.top = node.y + "px";
+    element.style.position = "absolute";
     element.textContent = node.value;
     container.appendChild(element);
 
@@ -134,6 +143,7 @@ function drawLine(container, x1, y1, x2, y2) {
     const line = document.createElement("div");
     const length = Math.hypot(x2 - x1, y2 - y1);
     const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+
     line.style.position = "absolute";
     line.style.width = length + "px";
     line.style.height = "2px";
@@ -142,15 +152,119 @@ function drawLine(container, x1, y1, x2, y2) {
     line.style.transformOrigin = "0 0";
     line.style.transform = `rotate(${angle}deg)`;
     line.style.background = "#000";
+
     container.appendChild(line);
 }
 
 function clearBtn() {
-    root = null;
-    document.getElementById("treeContainer").innerHTML = "";
+    root = null;  // Reset tree
+    document.getElementById("treeContainer").innerHTML = ""; 
+
 }
 
-/* ================= ALL INPUT FIELD ================== */
+// ================= GRAPH IMPLEMENTATION ================= //
+
+class GraphNode {
+    constructor(value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
+        this.x = 0;
+        this.y = 0;
+    }
+}
+
+let graphRoot = null;
+
+function addGraph() {
+    const input = document.getElementById("graphInput");
+    const value = input.value.trim();
+    if (!value) return;
+
+    graphRoot = insertGraphNode(graphRoot, Number(value));
+    layoutGraph(graphRoot, 0, 600, 40, 90);
+    visualizeGraph();
+    input.value = "";
+}
+
+document.getElementById("graphInput").addEventListener("keyup", e => {
+    if (e.key === "Enter") addGraph();
+});
+
+function insertGraphNode(node, value) {
+    if (!node) return new GraphNode(value);
+    if (value < node.value) node.left = insertGraphNode(node.left, value);
+    else node.right = insertGraphNode(node.right, value);
+    return node;
+}
+
+function layoutGraph(node, minX, maxX, y, spacing) {
+    if (!node) return;
+    node.y = y;
+
+    if (!node.left && !node.right) {
+        node.x = (minX + maxX) / 2;
+        return;
+    }
+
+    if (node.left) layoutGraph(node.left, minX, (minX + maxX) / 2, y + spacing, spacing);
+    if (node.right) layoutGraph(node.right, (minX + maxX) / 2, maxX, y + spacing, spacing);
+
+    node.x = node.left && node.right
+        ? (node.left.x + node.right.x) / 2
+        : node.left ? node.left.x : node.right.x;
+}
+
+function visualizeGraph() {
+    const container = document.getElementById("graphContainer");
+    container.innerHTML = "";
+    drawGraphNode(graphRoot, container);
+}
+
+function drawGraphNode(node, container) {
+    if (!node) return;
+
+    const element = document.createElement("div");
+    element.className = "node";
+    element.style.left = node.x + "px";
+    element.style.top = node.y + "px";
+    element.style.position = "absolute";
+    element.textContent = node.value;
+    container.appendChild(element);
+
+    if (node.left) {
+        drawGraphLine(container, node.x + 30, node.y + 30, node.left.x + 30, node.left.y + 30);
+        drawGraphNode(node.left, container);
+    }
+    if (node.right) {
+        drawGraphLine(container, node.x + 30, node.y + 30, node.right.x + 30, node.right.y + 30);
+        drawGraphNode(node.right, container);
+    }
+}
+
+function drawGraphLine(container, x1, y1, x2, y2) {
+    const line = document.createElement("div");
+    const length = Math.hypot(x2 - x1, y2 - y1);
+    const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+
+    line.style.position = "absolute";
+    line.style.width = length + "px";
+    line.style.height = "2px";
+    line.style.left = x1 + "px";
+    line.style.top = y1 + "px";
+    line.style.transformOrigin = "0 0";
+    line.style.transform = `rotate(${angle}deg)`;
+    line.style.background = "#000";
+
+    container.appendChild(line);
+}
+
+function clearGraph() {
+    graphRoot = null;
+    document.getElementById("graphContainer").innerHTML = "";
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const allInputField = document.getElementById("allInputField");
     const allInputBtn = document.getElementById("allInputBtn");
@@ -161,12 +275,14 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("stack-numbers").value = value;
         document.getElementById("queue-numbers").value = value;
         document.getElementById("nodeInput").value = value;
+        document.getElementById("graphInput").value = value;
     });
 
     allInputBtn.addEventListener("click", () => {
         pushNumber();
         enqueueNumber();
         addNode();
+        addGraph
 
         allInputField.value = "";
     });
@@ -175,5 +291,6 @@ document.addEventListener("DOMContentLoaded", () => {
         popNumber();
         dequeueNumber();
         clearBtn();
+        clearGraph
     });
 });
